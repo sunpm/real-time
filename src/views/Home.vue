@@ -1,14 +1,14 @@
 <template>
   <div class="home">
-    {{ realTime }}
+{{realTime}}
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue'
+import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
 import { getTime } from '@/api/time'
 import { dataValueOf, dateFormat } from '@/utils/day'
-import { setTimer } from '@/utils/timer'
+import { setTimer, clearTimer } from '@/utils/timer'
 
 export default defineComponent({
   name: 'Home',
@@ -19,6 +19,10 @@ export default defineComponent({
       const { sysTime2 } = await getTime()
       realTime.value = dateFormat(sysTime2)
       time.value = dataValueOf(sysTime2)
+    })
+
+    onUnmounted(() => {
+      clearTimer('realTime')
     })
 
     setTimer('realTime', () => {
@@ -32,3 +36,15 @@ export default defineComponent({
   }
 })
 </script>
+<style lang="scss">
+.home {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #000;
+}
+</style>
