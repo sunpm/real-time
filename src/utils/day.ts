@@ -13,6 +13,6 @@ export function dateFormat (date: dateType = new Date(), template = 'YYYY-MM-DD 
  * 返回 Unix 时间戳 (毫秒)
  * @param date
  */
-export function dataValueOf (date: string): number {
+export function dataValueOf (date: string | Date = new Date()): number {
   return dayjs(date).valueOf()
 }

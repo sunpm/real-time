@@ -1,24 +1,28 @@
 <template>
   <div class="home">
-{{realTime}}
+    <DateText :text="dateText" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
-import { getTime } from '@/api/time'
+import { defineComponent, ref, onMounted, onUnmounted, computed } from 'vue'
 import { dataValueOf, dateFormat } from '@/utils/day'
 import { setTimer, clearTimer } from '@/utils/timer'
+import DateText from '@/components/DateText.vue'
 
 export default defineComponent({
   name: 'Home',
+  components: {
+    DateText
+  },
   setup () {
     const realTime = ref()
-    const time = ref(0)
+    const time = ref()
+
     onMounted(async () => {
-      const { sysTime2 } = await getTime()
-      realTime.value = dateFormat(sysTime2)
-      time.value = dataValueOf(sysTime2)
+      const timeUnix = dataValueOf()
+      time.value = timeUnix
+      realTime.value = dateFormat(timeUnix)
     })
 
     onUnmounted(() => {
@@ -30,8 +34,12 @@ export default defineComponent({
       realTime.value = dateFormat(time.value)
     })
 
+    // 日期
+    const dateText = computed(() => dateFormat(time.value))
+
     return {
-      realTime
+      realTime,
+      dateText
     }
   }
 })
@@ -44,7 +52,7 @@ export default defineComponent({
   align-items: center;
   font-size: 50px;
   font-weight: bold;
-  color: #fff;
-  background-color: #000;
+  color: #e2ecfd;
+  background-color: #0d1320;
 }
 </style>
