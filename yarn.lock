@@ -8076,6 +8076,11 @@ sockjs@^0.3.21:
     uuid "^8.3.2"
     websocket-driver "^0.7.4"
 
+solarlunar-es@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npmmirror.com/solarlunar-es/-/solarlunar-es-1.0.6.tgz#caea8cb8935f719073dcbbf23de6393f42db6dfd"
+  integrity sha512-bbDsTCroVxFOI4UMnv8Bx8zGVOHECEvwwkmh1203zntgGqb+bPRcl4Jhg7XyEpw8lj7GKKHqGDCqUlIxzkll6w==
+
 sort-keys@^1.0.0:
   version "1.1.2"
   resolved "https://registry.npmmirror.com/sort-keys/-/sort-keys-1.1.2.tgz#441b6d4d346798f1b4e49e8920adfba0e543f9ad"

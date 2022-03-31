@@ -4,18 +4,13 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { useStore } from 'vuex'
 import { dateFormat } from '@/utils/day'
 
 export default defineComponent({
-  name: 'DateText',
-  setup () {
-    const store = useStore()
+  name: 'LuDateText',
+  setup (props) {
     // 日期
-    const dateText = computed(() => {
-      const time = store.state.time
-      return dateFormat(time)
-    })
+    const dateText = computed(() => dateFormat(props.time))
     return {
       dateText
     }
