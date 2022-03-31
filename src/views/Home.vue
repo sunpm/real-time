@@ -1,22 +1,23 @@
 <template>
   <div class="home">
+    <LunarText />
     <DateText />
-
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted } from 'vue'
 import { useStore } from 'vuex'
-import solarLunar from 'solarlunar-es'
 import { dataValueOf } from '@/utils/day'
 import { clearTimer } from '@/utils/timer'
 import DateText from '@/components/DateText.vue'
+import LunarText from '@/components/LunarText.vue'
 
 export default defineComponent({
   name: 'Home',
   components: {
-    DateText
+    DateText,
+    LunarText
   },
   setup () {
     const store = useStore()
@@ -30,9 +31,6 @@ export default defineComponent({
       clearTimer('realTime')
     })
 
-    // console.log(getWeek(time.value))
-    console.log(solarLunar.solar2lunar(2022, 3, 31))
-
     return {
     }
   }
@@ -40,8 +38,10 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .home {
+  line-height: 1;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 50px;

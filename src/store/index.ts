@@ -14,12 +14,13 @@ export default createStore({
   actions: {
     // 更新时间戳
     updateTime ({ commit }, time) {
+      const timeout = 10000000
       commit('updateTime', time)
       clearTimer('realTime')
       setTimer('realTime', () => {
-        time += 1000
+        time += timeout
         commit('updateTime', time)
-      })
+      }, timeout)
     }
   },
   modules: {
