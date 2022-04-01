@@ -14,7 +14,7 @@ export default defineComponent({
     // 日期
     const dateText = computed(() => {
       const time = store.state.time
-      return dateFormat(time)
+      return dateFormat(time, 'YYYY年MM月DD日 HH:mm:ss')
     })
     return {
       dateText
