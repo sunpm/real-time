@@ -1,5 +1,5 @@
 <template>
-  <div class="date-text">{{ dateFormat(time, 'YYYY年MM月DD日 HH:mm:ss') }}</div>
+  <div class="date-text">{{ dateFormat(time) }}</div>
 </template>
 
 <script lang="ts" setup>
