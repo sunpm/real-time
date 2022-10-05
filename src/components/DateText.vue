@@ -1,26 +1,13 @@
 <template>
-  <div class="date-text">{{dateText}}</div>
+  <div class="date-text">{{ dateFormat(time, 'YYYY年MM月DD日 HH:mm:ss') }}</div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { useStore } from 'vuex'
-import { dateFormat } from '@/utils/day'
+<script lang="ts" setup>
+import {dateFormat} from '@/utils/day'
+import {useTime} from "@/composables/useTime"
 
-export default defineComponent({
-  name: 'DateText',
-  setup () {
-    const store = useStore()
-    // 日期
-    const dateText = computed(() => {
-      const time = store.state.time
-      return dateFormat(time, 'YYYY年MM月DD日 HH:mm:ss')
-    })
-    return {
-      dateText
-    }
-  }
-})
+const {time} = useTime()
+
 </script>
 
 <style scoped lang="scss">
